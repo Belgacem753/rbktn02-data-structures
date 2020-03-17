@@ -16,10 +16,17 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+
     if (this.head){
       var remNode = this.head
-      this.head = remNode.next;
-      return remNode.value;
+      if (this.head === this.tail){
+        this.head = null;
+        this.tail = null;
+        return remNode.value;
+      } else {
+        this.head = remNode.next;
+        return remNode.value;
+      }
     }
   };
 

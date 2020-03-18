@@ -15,9 +15,9 @@ binaryTreeMethods.insert = function (val){
     this.left = child
   } else if(val > this.value && !this.right){
     this.right = child
-  }else if(val < this.value && !!this.left){
+  }else if(val < this.value && this.left){
     this.left.insert(val);
-  } else if(val > this.value && !!this.right){
+  } else if(val > this.value && this.right){
     this.right.insert(val);
   }
 };
@@ -27,17 +27,23 @@ if (target === this.value){
   return true;
 
 } else if (target !== this.value) {
-  if (target < this.value && !!this.left ){
+  if (target < this.value && this.left ){
     return this.left.contains(target);
-  }else if (target > this.value && !!this.right){
+  }else if (target > this.value && this.right){
     return this.right.contains(target)
   }
 }
 return false
 };
 
-binaryTreeMethods.depthFirstLog = function (){
-
+binaryTreeMethods.depthFirstLog = function (callBack){
+  callBack(this.value);
+  if (this.left) {
+    this.left.depthFirstLog(callBack);
+  }
+  if (this.right) {
+    this.right.depthFirstLog(callBack);
+  }
 };
 
 

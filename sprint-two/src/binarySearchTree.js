@@ -23,7 +23,17 @@ binaryTreeMethods.insert = function (val){
 };
 
 binaryTreeMethods.contains = function (target){
+if (target === this.value){
+  return true;
 
+} else if (target !== this.value) {
+  if (target < this.value && !!this.left ){
+    return this.left.contains(target);
+  }else if (target > this.value && !!this.right){
+    return this.right.contains(target)
+  }
+}
+return false
 };
 
 binaryTreeMethods.depthFirstLog = function (){
